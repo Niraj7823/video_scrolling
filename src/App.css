@@ -23,7 +23,7 @@ body,
 }
 .app {
   position: relative;
-  height: 100vh;
+  height: 100dvh;
   width: 100%;
   background-color: #000;
   overflow: hidden;
