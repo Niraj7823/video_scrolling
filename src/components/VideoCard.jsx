@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "../css/VideoCard.module.css";
-import { Button } from "@mui/material";
+import { Button, Avatar } from "@mui/material";
 import { MdFavoriteBorder } from "react-icons/md";
 import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
@@ -18,6 +18,7 @@ const VideoCard = ({
   title,
   description,
   userName,
+  profileImage,
   hashtag,
   likes,
   comments,
@@ -137,6 +138,16 @@ const VideoCard = ({
           </div>
 
           <div className={styles.creatorSection}>
+            <Avatar
+              alt={userName}
+              src={profileImage}
+              sx={{
+                height: 32,
+                width: 32,
+              }}
+            >
+              {userName[0]}
+            </Avatar>
             <span className={styles.userName}>{userName}</span>
             <Button
               variant="outlined"
