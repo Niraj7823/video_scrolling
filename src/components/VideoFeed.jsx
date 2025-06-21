@@ -10,7 +10,10 @@ const VideoFeed = () => {
   const [isMuted, setIsMuted] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => setVideos(data), 100);
+    setTimeout(() => {
+      setVideos(data);
+      setActiveIndex(0);
+    }, 100);
   }, []);
 
   useEffect(() => {

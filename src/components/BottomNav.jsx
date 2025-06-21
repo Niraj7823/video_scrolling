@@ -1,6 +1,6 @@
 import { BottomNavigation, BottomNavigationAction } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
-import PersonIcon from "@mui/icons-material/Person";
+import { FiSearch } from "react-icons/fi";
+import { IoPersonSharp } from "react-icons/io5";
 import { BsCameraVideoFill } from "react-icons/bs";
 import { CiPlay1 } from "react-icons/ci";
 import { CgAddR } from "react-icons/cg";
@@ -18,28 +18,23 @@ const BottomNav = () => {
       }}
     >
       <BottomNavigationAction
-        label="Home"
-        icon={<CiPlay1 size={22} />}
+        icon={<CiPlay1 size={27} />}
         sx={{ color: "#fff" }}
       />
       <BottomNavigationAction
-        label="Shorts"
-        icon={<BsCameraVideoFill size={22} />}
+        icon={<BsCameraVideoFill size={25} />}
         sx={{ color: "#fff" }}
       />
       <BottomNavigationAction
-        label="Add"
         icon={<CgAddR size={25} />}
         sx={{ color: "#fff" }}
       />
       <BottomNavigationAction
-        label="Search"
-        icon={<SearchIcon />}
+        icon={<FiSearch size={25} />}
         sx={{ color: "#fff" }}
       />
       <BottomNavigationAction
-        label="Profile"
-        icon={<PersonIcon />}
+        icon={<IoPersonSharp size={25} />}
         sx={{ color: "#fff" }}
       />
     </BottomNavigation>
