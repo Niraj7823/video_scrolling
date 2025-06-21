@@ -34,7 +34,6 @@ const VideoCard = ({
   const [isPlaying, setIsPlaying] = useState(true);
   const [progress, setProgress] = useState(0);
 
-  // Play / pause based on visibility (isActive)
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
@@ -56,7 +55,7 @@ const VideoCard = ({
     }
 
     video.muted = isMuted;
-  }, [isActive, isMuted]);
+  }, [isActive]);
 
   const handleMuteClick = () => {
     onMuteToggle();
@@ -98,7 +97,6 @@ const VideoCard = ({
 
   return (
     <>
-      {/* Play / Pause Toggle Button (Left Side) */}
       <div className={styles.leftPlayButton} onClick={handlePlayPauseToggle}>
         {isPlaying ? (
           <GiPauseButton fontSize="medium" size={20} />
@@ -129,7 +127,6 @@ const VideoCard = ({
           </div>
         )}
 
-        {/* Left Overlay */}
         <div className={styles.leftOverlay}>
           <div className={styles.hashtagSection}>
             <span className={styles.hashtag}>#</span>
@@ -182,7 +179,6 @@ const VideoCard = ({
           </div>
         </div>
 
-        {/* Right Overlay */}
         <div className={styles.rightOverlay}>
           <div className={styles.icon}>
             <MdFavoriteBorder size={25} />
@@ -210,7 +206,6 @@ const VideoCard = ({
         </div>
       </div>
 
-      {/* Progress Bar */}
       <div className={styles.progressBarWrapper} onClick={handleSeek}>
         <div className={styles.progressTrack}>
           <div
