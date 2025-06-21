@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "../css/VideoCard.module.css";
-import { Avatar, Button } from "@mui/material";
+import { Button } from "@mui/material";
 import { MdFavoriteBorder } from "react-icons/md";
 import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
@@ -10,13 +10,14 @@ import { FiMessageCircle } from "react-icons/fi";
 import { LuIndianRupee } from "react-icons/lu";
 import { TfiMoreAlt } from "react-icons/tfi";
 import { BiFullscreen } from "react-icons/bi";
+import { GrPlayFill } from "react-icons/gr";
+import { GiPauseButton } from "react-icons/gi";
 
 const VideoCard = ({
   videoUrl,
   title,
   description,
   userName,
-  userImage,
   hashtag,
   likes,
   comments,
@@ -30,22 +31,31 @@ const VideoCard = ({
   const [showMuteIcon, setShowMuteIcon] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const hasPlayedRef = useRef(false);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [progress, setProgress] = useState(0);
 
+  // Play / pause based on visibility (isActive)
   useEffect(() => {
-    if (!videoRef.current) return;
+    const video = videoRef.current;
+    if (!video) return;
 
     if (isActive) {
-      if (!hasPlayedRef.current) {
-        videoRef.current.currentTime = 0;
-        hasPlayedRef.current = true;
-      }
-      videoRef.current.play().catch(() => {});
+      video.currentTime = 0;
+      video
+        .play()
+        .then(() => {
+          setIsPlaying(true);
+        })
+        .catch((err) => {
+          console.warn("Autoplay failed", err);
+          setIsPlaying(false);
+        });
     } else {
-      videoRef.current.pause();
-      hasPlayedRef.current = false;
+      video.pause();
+      setIsPlaying(false);
     }
 
-    videoRef.current.muted = isMuted;
+    video.muted = isMuted;
   }, [isActive, isMuted]);
 
   const handleMuteClick = () => {
@@ -57,7 +67,6 @@ const VideoCard = ({
   const toggleDescription = () => {
     setIsExpanded(!isExpanded);
   };
-  const [progress, setProgress] = useState(0);
 
   const handleTimeUpdate = () => {
     const video = videoRef.current;
@@ -74,8 +83,30 @@ const VideoCard = ({
     videoRef.current.currentTime = videoRef.current.duration * ratio;
   };
 
+  const handlePlayPauseToggle = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (video.paused) {
+      video.play();
+      setIsPlaying(true);
+    } else {
+      video.pause();
+      setIsPlaying(false);
+    }
+  };
+
   return (
     <>
+      {/* Play / Pause Toggle Button (Left Side) */}
+      <div className={styles.leftPlayButton} onClick={handlePlayPauseToggle}>
+        {isPlaying ? (
+          <GiPauseButton fontSize="medium" size={20} />
+        ) : (
+          <GrPlayFill fontSize="medium" />
+        )}
+      </div>
+
       <div className={styles.card}>
         <video
           ref={videoRef}
@@ -97,6 +128,7 @@ const VideoCard = ({
           </div>
         )}
 
+        {/* Left Overlay */}
         <div className={styles.leftOverlay}>
           <div className={styles.hashtagSection}>
             <span className={styles.hashtag}>#</span>
@@ -105,7 +137,6 @@ const VideoCard = ({
           </div>
 
           <div className={styles.creatorSection}>
-            <Avatar src={userImage} className={styles.avatar} />
             <span className={styles.userName}>{userName}</span>
             <Button
               variant="outlined"
@@ -140,6 +171,7 @@ const VideoCard = ({
           </div>
         </div>
 
+        {/* Right Overlay */}
         <div className={styles.rightOverlay}>
           <div className={styles.icon}>
             <MdFavoriteBorder size={25} />
@@ -166,6 +198,8 @@ const VideoCard = ({
           </div>
         </div>
       </div>
+
+      {/* Progress Bar */}
       <div className={styles.progressBarWrapper} onClick={handleSeek}>
         <div className={styles.progressTrack}>
           <div

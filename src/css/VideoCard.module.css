@@ -219,3 +219,16 @@
   border-radius: 50%;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
 }
+.leftPlayButton {
+  position: absolute;
+  top: 20px;
+  left: 70px;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 20;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

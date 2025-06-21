@@ -1,20 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "../css/VideoFeed.module.css";
 import VideoCard from "./VideoCard";
-import data from "../data/VideoData.json";
+import data from "../data/videoData.json";
 
 const VideoFeed = () => {
   const containerRef = useRef();
-  const [videos, setVideos] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMuted, setIsMuted] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setVideos(data);
-      setActiveIndex(0);
-    }, 100);
-  }, []);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -37,11 +29,11 @@ const VideoFeed = () => {
     Array.from(children).forEach((child) => observer.observe(child));
 
     return () => observer.disconnect();
-  }, [videos]);
+  }, []);
 
   return (
     <div className={styles.feedContainer} ref={containerRef}>
-      {videos.map((video, index) => (
+      {data.map((video, index) => (
         <div key={video.id} className={styles.videoWrapper}>
           <VideoCard
             {...video}
