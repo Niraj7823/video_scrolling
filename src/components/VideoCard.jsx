@@ -113,6 +113,7 @@ const VideoCard = ({
           onTimeUpdate={handleTimeUpdate}
           loop
           playsInline
+          muted={isMuted}
           className={styles.video}
           onClick={handleMuteClick}
         />
