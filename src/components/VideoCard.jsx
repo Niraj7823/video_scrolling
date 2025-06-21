@@ -30,7 +30,6 @@ const VideoCard = ({
   const videoRef = useRef(null);
   const [showMuteIcon, setShowMuteIcon] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
-  const hasPlayedRef = useRef(false);
   const [isPlaying, setIsPlaying] = useState(true);
   const [progress, setProgress] = useState(0);
 
