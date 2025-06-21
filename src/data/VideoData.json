@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "videoUrl": "/videos/sample1.mp4",
+    "title": "DEATH",
+    "description": "Terrifying search for a murderer while idyllic honeymoon is tragically cut short. Witness the unraveling of a shocking mystery.",
+    "userName": "Gabar Singh",
+    "userImage": "/images/user1.jpg",
+    "hashtag": "StartupIndia",
+    "likes": "200K",
+    "comments": "1.3K",
+    "shares": "456",
+    "earnings": "₹ 2.1K"
+  },
+  {
+    "id": 2,
+    "videoUrl": "/videos/smple2.mp4",
+    "title": "THE CHASE",
+    "description": "An intense car chase across the city. Watch as the stakes get higher and the action never stops! An intense car chase across the city. Watch as the stakes get higher and the action never stops! An intense car chase across the city. Watch as the stakes get higher and the action never stops! An intense car chase across the city. Watch as the stakes get higher and the action never stops! An intense car chase across the city. Watch as the stakes get higher and the action never stops!",
+    "userName": "Ravi Teja",
+    "userImage": "/images/user2.jpg",
+    "hashtag": "Thriller",
+    "likes": "152K",
+    "comments": "890",
+    "shares": "230",
+    "earnings": "₹ 1.4K"
+  }
+]

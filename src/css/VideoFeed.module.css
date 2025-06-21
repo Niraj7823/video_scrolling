@@ -1,0 +1,18 @@
+.feedContainer {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  padding-bottom: 60px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.feedContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.videoWrapper {
+  height: 100vh;
+  scroll-snap-align: start;
+  position: relative;
+}
