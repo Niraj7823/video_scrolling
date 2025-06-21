@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "../css/VideoFeed.module.css";
 import VideoCard from "./VideoCard";
-import data from "../data/videoData.json";
+import data from "../data/VideoData.json";
 
 const VideoFeed = () => {
   const containerRef = useRef();
